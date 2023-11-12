@@ -1,9 +1,10 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
 import { appRouter } from "@/trpc"
+import { absoluteUrl } from "@/lib/utils"
 
 const handler = (req: Request) =>
   fetchRequestHandler({
-    endpoint: "/api/trpc",
+    endpoint: absoluteUrl("/api/trpc"),
     req,
     router: appRouter,
     createContext: () => ({}),

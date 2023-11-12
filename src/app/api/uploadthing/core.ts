@@ -39,7 +39,10 @@ const onUploadComplete = async ({
     },
   })
 
-  if (isFileExist) return
+  if (isFileExist) {
+    console.log("file exists log this shit")
+    return
+  }
 
   const createdFile = await db.file.create({
     data: {

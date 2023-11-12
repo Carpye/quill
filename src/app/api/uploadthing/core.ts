@@ -40,7 +40,6 @@ const onUploadComplete = async ({
   })
 
   if (isFileExist) {
-    console.log("file exists log this shit")
     return
   }
 
@@ -123,8 +122,13 @@ export const ourFileRouter = {
   freePlanUploader: f({
     pdf: { maxFileSize: "4MB" },
   })
-    .middleware(middleware)
-    .onUploadComplete(onUploadComplete),
+    .middleware(() => {
+      return middleware()
+    })
+    .onUploadError((e) => console.error(e.error))
+    .onUploadComplete((args) => {
+      onUploadComplete(args)
+    }),
   proPlanUploader: f({
     pdf: { maxFileSize: "16MB" },
   })

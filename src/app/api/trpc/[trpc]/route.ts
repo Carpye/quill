@@ -4,7 +4,7 @@ import { absoluteUrl } from "@/lib/utils"
 
 const handler = (req: Request) =>
   fetchRequestHandler({
-    endpoint: absoluteUrl("/api/trpc"),
+    endpoint: "/api/trpc",
     req,
     router: appRouter,
     createContext: () => ({}),

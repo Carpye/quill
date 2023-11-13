@@ -9,6 +9,8 @@ import { NextRequest } from "next/server"
 
 import { OpenAIStream, StreamingTextResponse } from "ai"
 
+export const maxDuration = 25 // to ensure that longer messages can be streamed (default 10s is barely enougth)
+
 export const POST = async (req: NextRequest) => {
   // endpoint for asking a question to a pdf file
 
